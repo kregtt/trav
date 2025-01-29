@@ -7,3 +7,4 @@ cas <-s3readRDS("trav/casparticuliers.rds", bucket = "kregtt",region="")
 
 
 
+
