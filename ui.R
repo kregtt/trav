@@ -13,7 +13,7 @@ library(plyr)
 library(sf)
 
 
-test_result_path <- "dep_France_DOM.shp"
+test_result_path <- "www/dep_France_DOM.shp"
 
 get_object("kregtt/trav/dep_France_DOM.shp"
            , bucket = Sys.getenv("S3_BUCKET"),region="") %>%
@@ -21,7 +21,7 @@ get_object("kregtt/trav/dep_France_DOM.shp"
 
 
 
-test_result_path <- "dep_France_DOM.shx"
+test_result_path <- "www/dep_France_DOM.shx"
 
 get_object("kregtt/trav/dep_France_DOM.shx"
            , bucket = Sys.getenv("S3_BUCKET"),region="") %>%
@@ -104,4 +104,8 @@ map_regions <- leaflet() %>%
 
 
 map_regions
+
+
+library(htmlwidgets)
+saveWidget(map_regions, file = "nyc_map.html")
 
