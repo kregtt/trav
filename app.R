@@ -1,4 +1,4 @@
-
+setwd("/home/onyxia/work/trav")
 library("aws.s3")
 ###
 ###
@@ -57,12 +57,15 @@ depm<-subset(depm,reg=="53")
 # comm <- read_sf("com_France_DOM.shp")
 # comm<-subset(comm,reg=="53")
 getwd()
+
 comm <-s3readRDS("trav/comm.rds", bucket = "kregtt",region="")
 
 
 test2<-read.csv("www/test2.csv")
 comm<-select(comm,-lib,-nom)
 test2<-mutate(test2,code=as.character(code))
+
+library(dplyr)
 comm<-left_join(comm,test2,by=c("code"="code"))
 comm<-mutate(
   comm,
@@ -92,7 +95,7 @@ depm <- depm %>%
   sf::st_transform('+proj=longlat +datum=WGS84')
 
  commune<-read.csv("www/communes-france-2025.csv")
-library(dplyr)
+
  commune<-filter(commune,reg_code==53)
 commune<-select(commune,code_insee,latitude_mairie,longitude_mairie)
 
@@ -137,5 +140,5 @@ map_regions
 
 
 library(htmlwidgets)
-saveWidget(map_regions, file = "nyc_map10.html")
+saveWidget(map_regions, file = "nyc_map11.html")
 
