@@ -1,3 +1,4 @@
+
 setwd("/home/onyxia/work/trav")
 library("aws.s3")
 ###
